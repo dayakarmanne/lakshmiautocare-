@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lakshmi Auto Care | Ultra-Luxury Detailing & Restoration Studio</title>
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
@@ -152,18 +153,10 @@
             justify-content: center;
             transition: opacity 0.5s ease, visibility 0.5s ease;
         }
-        .loader-spinner-rounded {
-            width: 80px;
-            height: 80px;
-            border: 3px solid rgba(223, 177, 91, 0.2);
-            border-top: 3px solid #ffd700;
-            border-radius: 50%;
-            animation: spin 0.9s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
-            box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .preloader-video {
+            width: min(72vw, 320px);
+            height: auto;
+            object-fit: contain;
         }
     </style>
 </head>
@@ -172,17 +165,12 @@
     <!-- Top Shining Golden Scroll Progress Bar -->
     <div id="scroll-progress"></div>
 
-    <!-- Initial 1-Second Rounded Preloader -->
+    <!-- Branded preloader -->
     <div id="preloader">
-        <div class="space-y-6 text-center px-4">
-            <div class="w-24 h-24 mx-auto rounded-full glass-card flex items-center justify-center border border-gold-300/60 shadow-2xl pulse-gold">
-                <i class="fa-solid fa-gem text-[#ffd700] text-3xl"></i>
-            </div>
-            <div class="space-y-2">
-                <h1 class="font-serif text-3xl sm:text-4xl font-bold tracking-widest gold-shimmer">LAKSHMI AUTO CARE</h1>
-                <p class="text-xs uppercase tracking-[0.4em] text-gold-300 font-medium">Ultra-Luxury Detailing Studio</p>
-            </div>
-            <div class="loader-spinner-rounded mx-auto mt-4"></div>
+        <div class="px-4">
+            <video class="preloader-video mx-auto" autoplay muted loop playsinline preload="auto" aria-label="Lakshmi Auto Care animation">
+                <source src="preloader.mp4" type="video/mp4">
+            </video>
         </div>
     </div>
 
@@ -205,14 +193,12 @@
     <!-- Navigation Bar -->
     <header class="fixed top-0 left-0 w-full z-40 transition-all duration-300 pt-1" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 sm:h-24 flex items-center justify-between">
-            <a href="#" class="flex items-center space-x-3 group">
-                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full glass-card flex items-center justify-center border border-gold-300/40 group-hover:border-[#ffd700] transition-all duration-300">
-                    <i class="fa-solid fa-gem text-[#ffd700] text-lg sm:text-xl"></i>
-                </div>
-                <div>
-                    <span class="font-serif text-xl sm:text-2xl font-bold tracking-wider gold-shimmer block">LAKSHMI</span>
-                    <span class="text-[9px] sm:text-[10px] tracking-[0.3em] text-gold-300 uppercase font-semibold">Auto Care</span>
-                </div>
+            <a href="#" class="flex items-center gap-2 sm:gap-3 group" aria-label="Lakshmi Auto Care home">
+                <img src="logo.svg" alt="" class="w-14 h-14 sm:w-16 sm:h-16 object-contain shrink-0">
+                <span class="flex flex-col leading-none">
+                    <span class="font-serif text-lg sm:text-2xl font-bold tracking-[0.12em] text-[#fcf6ba] group-hover:text-[#ffd700] transition-colors">LAKSHMI</span>
+                    <span class="mt-1.5 text-[9px] sm:text-[10px] tracking-[0.28em] text-gold-300 uppercase font-semibold">Auto Care</span>
+                </span>
             </a>
 
             <nav class="hidden lg:flex items-center space-x-8">
@@ -642,13 +628,12 @@
     <!-- Footer -->
     <footer class="border-t border-gold-300/20 py-12 px-4 sm:px-6 relative z-10 glass-card">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
-            <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 rounded-full glass-card flex items-center justify-center border border-gold-300/40">
-                    <i class="fa-solid fa-gem text-[#ffd700] text-sm"></i>
-                </div>
+            <div class="flex items-center gap-3">
+                <img src="logo.svg" alt="" class="w-14 h-14 object-contain shrink-0">
                 <div>
-                    <span class="font-serif text-lg font-bold tracking-wider gold-shimmer block">LAKSHMI AUTO CARE</span>
-                    <span class="text-[9px] tracking-[0.2em] text-gold-300 uppercase">ORR service road, Vattinagulapally</span>
+                    <span class="font-serif text-lg font-bold tracking-[0.12em] text-[#fcf6ba] block">LAKSHMI</span>
+                    <span class="text-[9px] tracking-[0.2em] text-gold-300 uppercase block">Auto Care</span>
+                    <span class="mt-1 text-[9px] tracking-[0.12em] text-gray-400 block">ORR service road, Vattinagulapally</span>
                 </div>
             </div>
 
