@@ -3,20 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lakshmi Auto Care | Ultra-Luxury Detailing & Restoration Studio</title>
+    <title>Lakshmi Autocare | Ultra-Luxury Detailing & Restoration Studio</title>
     <link rel="icon" type="image/svg+xml" href="logo.svg">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
+    <!-- Google Fonts: Chakra Petch (matching your brand image font style) & Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- FontAwesome for Luxury Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Three.js for 3D Transparent Background -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
-    
     <script>
         tailwind.config = {
             theme: {
@@ -39,7 +38,7 @@
                         }
                     },
                     fontFamily: {
-                        serif: ['"Cormorant Garamond"', 'serif'],
+                        brand: ['"Chakra Petch"', 'sans-serif'],
                         sans: ['"Plus Jakarta Sans"', 'sans-serif']
                     }
                 }
@@ -62,30 +61,35 @@
             background: #ffd700;
         }
 
-        .cursor-dot {
-            width: 8px;
-            height: 8px;
-            background-color: #ffd700;
-            border-radius: 50%;
-            position: fixed;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-            z-index: 10000;
-            box-shadow: 0 0 15px #ffd700, 0 0 30px #dfb15b;
-        }
         .cursor-ring {
-            width: 44px;
-            height: 44px;
-            border: 1px solid rgba(223, 177, 91, 0.6);
-            border-radius: 50%;
+            width: 48px;
+            height: 48px;
             position: fixed;
             top: 0;
             left: 0;
             pointer-events: none;
             z-index: 9999;
-            transition: all 0.08s ease-out;
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.25);
+            transition: transform 0.08s ease-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            backdrop-filter: none;
+        }
+
+        @keyframes rotateLogo {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .cursor-logo {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+            animation: rotateLogo 6s linear infinite;
+            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.4));
         }
 
         #scroll-progress {
@@ -117,6 +121,14 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-shadow: 0 0 35px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Dedicated Orange styling for Lakshmi Autocare brand name */
+        .brand-name {
+            font-family: 'Chakra Petch', sans-serif;
+            color: #f97316 !important; /* Orange color */
+            font-weight: 700;
+            letter-spacing: 0.05em;
         }
 
         #canvas-container {
@@ -168,15 +180,16 @@
     <!-- Branded preloader -->
     <div id="preloader">
         <div class="px-4">
-            <video class="preloader-video mx-auto" autoplay muted loop playsinline preload="auto" aria-label="Lakshmi Auto Care animation">
+            <video class="preloader-video mx-auto" autoplay muted loop playsinline preload="auto" aria-label="Lakshmi Autocare animation">
                 <source src="preloader.mp4" type="video/mp4">
             </video>
         </div>
     </div>
 
-    <!-- Custom Glowing Cursor -->
-    <div class="cursor-dot hidden md:block" id="cursor-dot"></div>
-    <div class="cursor-ring hidden md:block" id="cursor-ring"></div>
+    <!-- Custom Rotating Logo Cursor -->
+    <div class="cursor-ring hidden md:flex items-center justify-center" id="cursor-ring">
+        <img src="logo.svg" alt="Cursor Logo" class="cursor-logo">
+    </div>
 
     <!-- 3D Transparent Background Canvas -->
     <div id="canvas-container"></div>
@@ -193,33 +206,31 @@
     <!-- Navigation Bar -->
     <header class="fixed top-0 left-0 w-full z-40 transition-all duration-300 pt-1" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 sm:h-24 flex items-center justify-between">
-            <a href="#" class="flex items-center gap-2 sm:gap-3 group" aria-label="Lakshmi Auto Care home">
-                <img src="logo.svg" alt="" class="w-14 h-14 sm:w-16 sm:h-16 object-contain shrink-0">
-                <span class="flex flex-col leading-none">
-                    <span class="font-serif text-lg sm:text-2xl font-bold tracking-[0.12em] text-[#fcf6ba] group-hover:text-[#ffd700] transition-colors">LAKSHMI</span>
-                    <span class="mt-1.5 text-[9px] sm:text-[10px] tracking-[0.28em] text-gold-300 uppercase font-semibold">Auto Care</span>
+            <a href="#" class="flex items-center gap-2 sm:gap-3 group" aria-label="Lakshmi Autocare home">
+                <img src="logo.svg" alt="Lakshmi Autocare Logo" class="w-14 h-14 sm:w-16 sm:h-16 object-contain shrink-0">
+                <span class="brand-name text-lg sm:text-2xl tracking-wide uppercase">
+                    Lakshmi Autocare
                 </span>
             </a>
 
             <nav class="hidden lg:flex items-center space-x-8">
                 <a href="#" class="text-sm uppercase tracking-widest text-[#ffd700] font-semibold transition-colors">Home</a>
                 <a href="#services" class="text-sm uppercase tracking-widest text-gray-300 hover:text-[#ffd700] transition-colors">Services</a>
-                <a href="#about" class="text-sm uppercase tracking-widest text-gray-300 hover:text-[#ffd700] transition-colors">Philosophy</a>
                 <a href="#gallery" class="text-sm uppercase tracking-widest text-gray-300 hover:text-[#ffd700] transition-colors">Gallery</a>
-                <a href="#contact" class="text-sm uppercase tracking-widest text-gray-300 hover:text-[#ffd700] transition-colors">Location</a>
+                <a href="#contact" class="text-sm uppercase tracking-widest text-gray-300 hover:text-[#ffd700] transition-colors">Contact</a>
             </nav>
 
             <div class="hidden md:flex items-center space-x-4">
-                <a href="tel:7780715882" class="px-4 py-2 rounded-full text-xs uppercase tracking-widest font-semibold text-gold-300 border border-gold-300/40 hover:bg-gold-300/10 hover:border-[#ffd700] transition-all duration-300 flex items-center space-x-2">
+                <a href="tel:898929995" class="px-4 py-2 rounded-full text-xs uppercase tracking-widest font-semibold text-gold-300 border border-gold-300/40 hover:bg-gold-300/10 hover:border-[#ffd700] transition-all duration-300 flex items-center space-x-2">
                     <i class="fa-solid fa-phone-volume text-[#ffd700]"></i>
-                    <span>7780 715 882</span>
+                    <span>8989 299 95</span>
                 </a>
                 <button onclick="openBookingModal()" class="px-5 py-2.5 rounded-full text-xs uppercase tracking-widest font-bold bg-gradient-to-r from-gold-500 via-gold-300 to-[#ffd700] text-navy-950 shadow-lg shadow-gold-300/20 hover:scale-105 active:scale-95 transition-all duration-300">
                     Book Appointment
                 </button>
             </div>
 
-            <button onclick="toggleMobileMenu()" class="lg:hidden text-[#ffd700] text-2xl p-2 focus:outline-none">
+            <button onclick="toggleMobileMenu()" class="lg:hidden text-[#ffd700] text-2xl p-2 focus:outline-none" aria-label="Toggle Navigation Menu">
                 <i class="fa-solid fa-bars" id="menu-icon"></i>
             </button>
         </div>
@@ -228,12 +239,11 @@
         <div id="mobile-menu" class="hidden lg:hidden glass-card border-t border-gold-300/20 px-6 py-6 space-y-4">
             <a href="#" onclick="toggleMobileMenu()" class="block text-sm uppercase tracking-widest text-[#ffd700] font-semibold">Home</a>
             <a href="#services" onclick="toggleMobileMenu()" class="block text-sm uppercase tracking-widest text-gray-200 hover:text-[#ffd700]">Services</a>
-            <a href="#about" onclick="toggleMobileMenu()" class="block text-sm uppercase tracking-widest text-gray-200 hover:text-[#ffd700]">Philosophy</a>
             <a href="#gallery" onclick="toggleMobileMenu()" class="block text-sm uppercase tracking-widest text-gray-200 hover:text-[#ffd700]">Gallery</a>
-            <a href="#contact" onclick="toggleMobileMenu()" class="block text-sm uppercase tracking-widest text-gray-200 hover:text-[#ffd700]">Location</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block text-sm uppercase tracking-widest text-gray-200 hover:text-[#ffd700]">Contact</a>
             <div class="pt-4 flex flex-col space-y-3">
-                <a href="tel:7780715882" class="w-full py-3 rounded-full text-center text-xs uppercase tracking-widest font-semibold text-gold-300 border border-gold-300/40">
-                    <i class="fa-solid fa-phone-volume mr-2"></i> 7780 715 882
+                <a href="tel:898929995" class="w-full py-3 rounded-full text-center text-xs uppercase tracking-widest font-semibold text-gold-300 border border-gold-300/40">
+                    <i class="fa-solid fa-phone-volume mr-2"></i> 8989 299 95
                 </a>
                 <button onclick="openBookingModal(); toggleMobileMenu();" class="w-full py-3 rounded-full text-xs uppercase tracking-widest font-bold bg-gradient-to-r from-gold-500 to-gold-300 text-navy-950">
                     Book Appointment
@@ -264,7 +274,7 @@
             </h1>
 
             <p class="text-gray-200 text-sm sm:text-lg max-w-3xl mx-auto font-light leading-relaxed drop-shadow-md">
-                Elite automotive aesthetic restoration, precision hand waxing, and bespoke detailing engineered for automotive perfectionists.
+                Elite automotive aesthetic restoration, precision hand waxing, and bespoke detailing engineered for automotive perfectionists by <span class="brand-name">Lakshmi Autocare</span>.
             </p>
 
             <div class="flex flex-wrap justify-center gap-3 pt-2">
@@ -298,7 +308,7 @@
                 <h2 class="font-serif text-3xl sm:text-5xl font-bold tracking-tight">Signature Services</h2>
                 <div class="w-24 h-0.5 bg-gradient-to-r from-transparent via-[#ffd700] to-transparent mx-auto"></div>
                 <p class="text-gray-300 text-sm sm:text-base font-light">
-                    Every treatment is tailored with surgical precision using advanced professional gear and pH-balanced products.
+                    Every treatment is tailored with surgical precision using advanced professional gear and pH-balanced products at <span class="brand-name">Lakshmi Autocare</span>.
                 </p>
             </div>
 
@@ -456,78 +466,6 @@
         </div>
     </section>
 
-    <!-- Philosophy & Motives Section -->
-    <section id="about" class="py-24 px-4 sm:px-6 relative z-10">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div class="lg:col-span-6 space-y-6">
-                <span class="text-xs uppercase tracking-[0.3em] text-[#ffd700] font-semibold">Our Guiding Standard</span>
-                <h2 class="font-serif text-3xl sm:text-5xl font-bold leading-tight">
-                    Quality service .Honest work.
-                </h2>
-                <p class="text-gray-300 text-sm sm:text-base font-light leading-relaxed">
-                    Located conveniently on the ORR service road in Vattinagulapally, Lakshmi Auto Care is built on unwavering integrity and technical precision.
-                </p>
-
-                <div class="space-y-4 pt-2">
-                    <div class="glass-card p-5 rounded-xl border border-gold-300/30 flex items-center space-x-4">
-                        <div class="w-10 h-10 rounded-lg glass-card flex items-center justify-center text-[#ffd700] text-lg flex-shrink-0">
-                            <i class="fa-solid fa-shield-heart"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold text-gold-200 text-sm">Your car our responsibility</h4>
-                            <p class="text-xs text-gray-400 font-light">We treat every vehicle as our personal master showcase piece.</p>
-                        </div>
-                    </div>
-
-                    <div class="glass-card p-5 rounded-xl border border-gold-300/30 flex items-center space-x-4">
-                        <div class="w-10 h-10 rounded-lg glass-card flex items-center justify-center text-[#ffd700] text-lg flex-shrink-0">
-                            <i class="fa-solid fa-wrench"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold text-gold-200 text-sm">We FIX IT RIGHT THE FIRST TIME</h4>
-                            <p class="text-xs text-gray-400 font-light">No shortcuts, no compromises—absolute perfection on every delivery.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="lg:col-span-6">
-                <div class="relative glass-card p-6 sm:p-12 rounded-3xl border border-gold-300/45 space-y-8">
-                    <div class="absolute -top-4 -right-4 w-24 h-24 bg-gold-300/10 rounded-full blur-xl"></div>
-                    <div class="flex items-center justify-between border-b border-gold-300/20 pb-6">
-                        <div>
-                            <span class="text-[10px] uppercase tracking-widest text-[#ffd700] block font-semibold">Operating Hours</span>
-                            <span class="font-serif text-lg sm:text-xl font-bold text-gray-100">Monday – Saturday</span>
-                        </div>
-                        <div class="text-right">
-                            <span class="text-[10px] uppercase tracking-widest text-[#ffd700] block font-semibold">Timing</span>
-                            <span class="font-serif text-lg sm:text-xl font-bold text-gold-300">9:00 AM – 7:00 PM</span>
-                        </div>
-                    </div>
-
-                    <div class="space-y-4">
-                        <div class="flex items-center space-x-4 text-sm text-gray-300">
-                            <i class="fa-solid fa-location-dot text-[#ffd700] text-lg w-6 flex-shrink-0"></i>
-                            <span>ORR service road, Vattinagulapally</span>
-                        </div>
-                        <div class="flex items-center space-x-4 text-sm text-gray-300">
-                            <i class="fa-solid fa-phone text-[#ffd700] text-lg w-6 flex-shrink-0"></i>
-                            <a href="tel:7780715882" class="hover:text-[#ffd700] transition-colors">7780 715 882</a>
-                        </div>
-                        <div class="flex items-center space-x-4 text-sm text-gray-300">
-                            <i class="fa-brands fa-instagram text-[#ffd700] text-lg w-6 flex-shrink-0"></i>
-                            <a href="https://instagram.com/lakshmi_autocare" target="_blank" class="hover:text-[#ffd700] transition-colors">@lakshmi_autocare</a>
-                        </div>
-                    </div>
-
-                    <button onclick="openBookingModal()" class="w-full py-4 rounded-xl text-xs uppercase tracking-widest font-bold bg-gradient-to-r from-gold-500 via-gold-300 to-[#ffd700] text-navy-950 shadow-lg shadow-gold-300/20 hover:scale-[1.02] active:scale-95 transition-all">
-                        Book Your Slot Now
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Gallery Section -->
     <section id="gallery" class="py-24 px-4 sm:px-6 relative z-10">
         <div class="max-w-7xl mx-auto space-y-12">
@@ -572,17 +510,17 @@
                 <span class="text-xs uppercase tracking-[0.3em] text-[#ffd700] font-semibold">Visit Our Studio</span>
                 <h2 class="font-serif text-3xl sm:text-5xl font-bold">Location & Inquiries</h2>
                 <p class="text-gray-300 text-sm font-light leading-relaxed">
-                    Conveniently situated for discerning vehicle owners along the ORR service road in Vattinagulapally. Connect with us directly or drop by for a personal consultation.
+                    Conveniently situated for discerning vehicle owners along the ORR service road in Vattinagulapally with <span class="brand-name">Lakshmi Autocare</span>. Connect with us directly or drop by for a personal consultation.
                 </p>
 
                 <div class="space-y-4">
-                    <div class="glass-card p-4 rounded-xl border border-gold-300/30 flex items-center space-x-4">
-                        <div class="w-12 h-12 rounded-lg glass-card flex items-center justify-center text-[#ffd700] text-xl flex-shrink-0">
+                    <div class="glass-card p-4 rounded-xl border border-gold-300/30 flex items-start space-x-4">
+                        <div class="w-12 h-12 rounded-lg glass-card flex items-center justify-center text-[#ffd700] text-xl flex-shrink-0 mt-1">
                             <i class="fa-solid fa-map-location-dot"></i>
                         </div>
                         <div>
-                            <h4 class="font-semibold text-gold-200 text-sm">Address</h4>
-                            <p class="text-xs text-gray-400">ORR service road, Vattinagulapally</p>
+                            <h4 class="font-semibold text-gold-200 text-sm">Registered Address</h4>
+                            <p class="text-xs text-gray-400">Sy.No: 283/A/1, ORR Service Road, Vattinagulapally (V), Gandipet Mandal, R.R. Dist, TS, 500075</p>
                         </div>
                     </div>
 
@@ -592,17 +530,27 @@
                         </div>
                         <div>
                             <h4 class="font-semibold text-gold-200 text-sm">Direct Contact</h4>
-                            <a href="tel:7780715882" class="text-xs text-gold-300 hover:underline">7780 715 882</a>
+                            <a href="tel:898929995" class="text-xs text-gold-300 hover:underline">8989 299 95 / 7780 715 882</a>
                         </div>
                     </div>
 
                     <div class="glass-card p-4 rounded-xl border border-gold-300/30 flex items-center space-x-4">
                         <div class="w-12 h-12 rounded-lg glass-card flex items-center justify-center text-[#ffd700] text-xl flex-shrink-0">
-                            <i class="fa-brands fa-instagram"></i>
+                            <i class="fa-solid fa-envelope"></i>
                         </div>
                         <div>
-                            <h4 class="font-semibold text-gold-200 text-sm">Instagram Showcase</h4>
-                            <a href="https://instagram.com/lakshmi_autocare" target="_blank" class="text-xs text-gold-300 hover:underline">@lakshmi_autocare</a>
+                            <h4 class="font-semibold text-gold-200 text-sm">Official Email</h4>
+                            <a href="mailto:Lakshmiautocare3333@gmail.com" class="text-xs text-gold-300 hover:underline">Lakshmiautocare3333@gmail.com</a>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-4 rounded-xl border border-gold-300/30 flex items-center space-x-4">
+                        <div class="w-12 h-12 rounded-lg glass-card flex items-center justify-center text-[#ffd700] text-xl flex-shrink-0">
+                            <i class="fa-solid fa-file-invoice"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gold-200 text-sm">GSTIN</h4>
+                            <p class="text-xs text-gold-300">36BCEPT4719C1ZM</p>
                         </div>
                     </div>
                 </div>
@@ -615,7 +563,7 @@
                     </div>
                     <h3 class="font-serif text-2xl font-bold text-gold-200">Ready for Transformation?</h3>
                     <p class="text-xs text-gray-300 leading-relaxed">
-                        Reserve your slot today and experience the gold standard in car care. Quality service .Honest work, guaranteed.
+                        Reserve your slot today and experience the gold standard in car care with <span class="brand-name">Lakshmi Autocare</span>. Quality service .Honest work, guaranteed.
                     </p>
                     <button onclick="openBookingModal()" class="w-full py-4 rounded-xl text-xs uppercase tracking-widest font-bold bg-gradient-to-r from-gold-500 via-gold-300 to-[#ffd700] text-navy-950 shadow-lg shadow-gold-300/20 hover:scale-105 transition-all">
                         Book Appointment Online
@@ -629,24 +577,24 @@
     <footer class="border-t border-gold-300/20 py-12 px-4 sm:px-6 relative z-10 glass-card">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
             <div class="flex items-center gap-3">
-                <img src="logo.svg" alt="" class="w-14 h-14 object-contain shrink-0">
+                <img src="logo.svg" alt="Lakshmi Autocare Logo" class="w-14 h-14 object-contain shrink-0">
                 <div>
-                    <span class="font-serif text-lg font-bold tracking-[0.12em] text-[#fcf6ba] block">LAKSHMI</span>
-                    <span class="text-[9px] tracking-[0.2em] text-gold-300 uppercase block">Auto Care</span>
-                    <span class="mt-1 text-[9px] tracking-[0.12em] text-gray-400 block">ORR service road, Vattinagulapally</span>
+                    <span class="brand-name text-lg tracking-wide block">Lakshmi Autocare</span>
+                    <span class="mt-1 text-[9px] tracking-[0.12em] text-gray-400 block max-w-xs">Sy.No: 283/A/1, ORR Service Road, Vattinagulapally (V), Gandipet Mandal, R.R. Dist, TS, 500075</span>
                 </div>
             </div>
 
             <div class="text-xs text-gray-400 space-y-1">
-                <p>&copy; 2026 Lakshmi Auto Care. All rights reserved.</p>
+                <p>&copy; 2026 <span class="brand-name text-xs">Lakshmi Autocare</span>. All rights reserved.</p>
                 <p class="text-[#ffd700] italic">"Your car our responsibility"</p>
+                <p class="text-[10px] text-gray-400">GSTIN: <span class="text-gold-300">36BCEPT4719C1ZM</span> | Email: <span class="text-gold-300">Lakshmiautocare3333@gmail.com</span></p>
             </div>
 
             <div class="flex items-center space-x-4">
-                <a href="https://instagram.com/lakshmi_autocare" target="_blank" class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-[#ffd700] hover:border-[#ffd700] transition-all">
+                <a href="https://instagram.com/lakshmi_autocare" target="_blank" class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-[#ffd700] hover:border-[#ffd700] transition-all" aria-label="Instagram">
                     <i class="fa-brands fa-instagram"></i>
                 </a>
-                <a href="tel:7780715882" class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-[#ffd700] hover:border-[#ffd700] transition-all">
+                <a href="tel:898929995" class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-[#ffd700] hover:border-[#ffd700] transition-all" aria-label="Phone Call">
                     <i class="fa-solid fa-phone"></i>
                 </a>
             </div>
@@ -654,21 +602,21 @@
     </footer>
 
     <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/917780715882?text=Hello%20Lakshmi%20Auto%20Care,%20I%20would%20like%20to%20book%20an%20appointment." target="_blank" class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-gradient-to-r from-emerald-500 to-emerald-600 text-white flex items-center justify-center text-2xl shadow-2xl hover:scale-110 transition-transform pulse-gold">
+    <a href="https://wa.me/91898929995?text=Hello%20Lakshmi%20Autocare,%20I%20would%20like%20to%20book%20an%20appointment." target="_blank" class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-gradient-to-r from-emerald-500 to-emerald-600 text-white flex items-center justify-center text-2xl shadow-2xl hover:scale-110 transition-transform pulse-gold" aria-label="WhatsApp Chat">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
     <!-- Booking Modal -->
     <div id="booking-modal" class="fixed inset-0 z-50 flex items-center justify-center px-4 bg-navy-950/80 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300">
         <div class="glass-card p-6 sm:p-8 rounded-3xl border border-gold-300/50 max-w-lg w-full relative space-y-6 transform scale-95 transition-all duration-300" id="modal-content">
-            <button onclick="closeBookingModal()" class="absolute top-6 right-6 text-gray-400 hover:text-[#ffd700] text-xl">
+            <button onclick="closeBookingModal()" class="absolute top-6 right-6 text-gray-400 hover:text-[#ffd700] text-xl" aria-label="Close modal">
                 <i class="fa-solid fa-xmark"></i>
             </button>
 
             <div class="text-center space-y-2">
                 <span class="text-[10px] uppercase tracking-[0.3em] text-[#ffd700] font-semibold">VIP Reservation</span>
                 <h3 class="font-serif text-2xl font-bold text-gold-200">Book Your Treatment</h3>
-                <p class="text-xs text-gray-300">Details will be sent instantly to Lakshmi Auto Care via WhatsApp.</p>
+                <p class="text-xs text-gray-300">Details will be sent instantly to <span class="brand-name text-xs">Lakshmi Autocare</span> via WhatsApp.</p>
             </div>
 
             <form onsubmit="handleBooking(event)" class="space-y-4">
@@ -733,22 +681,20 @@
             document.getElementById('scroll-progress').style.width = scrolled + '%';
         });
 
-        // Custom Glowing Cursor Logic
-        const cursorDot = document.getElementById('cursor-dot');
+        // Custom Rotating Logo Cursor Logic
         const cursorRing = document.getElementById('cursor-ring');
-        let mouseX = 0, mouseY = 0;
-        let ringX = 0, ringY = 0;
+        let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
+        let ringX = mouseX, ringY = mouseY;
 
         window.addEventListener('mousemove', (e) => {
             mouseX = e.clientX;
             mouseY = e.clientY;
-            cursorDot.style.transform = `translate3d(${mouseX - 4}px, ${mouseY - 4}px, 0)`;
         });
 
         function renderCursor() {
-            ringX += (mouseX - ringX) * 0.15;
-            ringY += (mouseY - ringY) * 0.15;
-            cursorRing.style.transform = `translate3d(${ringX - 22}px, ${ringY - 22}px, 0)`;
+            ringX += (mouseX - ringX) * 0.2;
+            ringY += (mouseY - ringY) * 0.2;
+            cursorRing.style.transform = `translate3d(${ringX - 24}px, ${ringY - 24}px, 0)`;
             requestAnimationFrame(renderCursor);
         }
         renderCursor();
@@ -871,7 +817,7 @@
 
             closeBookingModal();
 
-            const message = `*✨ NEW APPOINTMENT RESERVATION - LAKSHMI AUTO CARE ✨*%0A%0A` +
+            const message = `*✨ NEW APPOINTMENT RESERVATION - LAKSHMI AUTOCARE ✨*%0A%0A` +
                             `👤 *Name:* ${encodeURIComponent(name)}%0A` +
                             `📞 *Phone:* ${encodeURIComponent(phone)}%0A` +
                             `🚗 *Car Model:* ${encodeURIComponent(carModel)}%0A` +
@@ -879,9 +825,9 @@
                             `📅 *Date & Time:* ${encodeURIComponent(datetime)}%0A%0A` +
                             `_Your car our responsibility | Quality service .Honest work_`;
 
-            const whatsappUrl = `https://wa.me/917780715882?text=${message}`;
+            const whatsappUrl = `https://wa.me/91898929995?text=${message}`;
             
-            showToast('Redirecting to WhatsApp', 'Opening WhatsApp to send your booking details to 7780715882...');
+            showToast('Redirecting to WhatsApp', 'Opening WhatsApp to send your booking details to 898929995...');
             
             setTimeout(() => {
                 window.open(whatsappUrl, '_blank');
