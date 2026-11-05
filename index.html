@@ -290,48 +290,47 @@
         </div>
     </header>
 
-    <!-- Section Heading: LAKSHMI AUTO CARE -->
-    <div class="w-full text-center relative z-20 pt-32 sm:pt-36">
-        <h1 class="brand-name text-4xl sm:text-6xl uppercase tracking-widest drop-shadow-lg px-4">
+    <!-- Top Section: Title & Location Button (Tightened Spacing) -->
+    <div class="w-full text-center relative z-20 pt-20 sm:pt-24 pb-1">
+        <h1 class="brand-name text-3xl sm:text-6xl uppercase tracking-widest drop-shadow-lg px-4">
             Lakshmi Auto Care
         </h1>
-        <!-- Location Button -->
-        <div class="w-full text-center relative z-20 pt-4 px-4 flex justify-center">
-            <a href="https://maps.app.goo.gl/YourMapLinkHere" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-3 px-6 py-2.5 rounded-full glass-card border border-gold-300/40 hover:border-[#ffd700] transition-all pulse-gold shadow-lg">
+        <div class="w-full text-center relative z-20 pt-2 px-4 flex justify-center">
+            <a href="https://maps.app.goo.gl/YourMapLinkHere" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-3 px-5 py-2 rounded-full glass-card border border-gold-300/40 hover:border-[#ffd700] transition-all pulse-gold shadow-lg">
                 <span class="w-2.5 h-2.5 rounded-full bg-[#ffd700] animate-ping shrink-0"></span>
-                <span class="text-[10px] sm:text-sm uppercase tracking-[0.2em] sm:tracking-[0.35em] text-gold-300 font-semibold text-center">LOCATION : VATTINAGULAPALLY • ORR SERVICE ROAD</span>
+                <span class="text-[9px] sm:text-sm uppercase tracking-[0.2em] sm:tracking-[0.35em] text-gold-300 font-semibold text-center">LOCATION : VATTINAGULAPALLY • ORR SERVICE ROAD</span>
             </a>
         </div>
     </div>
 
-    <!-- HD Video Hero Section with Transparent Sides Matching Background -->
-    <section class="relative min-h-[80vh] sm:min-h-[95vh] flex flex-col justify-between pt-8 pb-12 px-4 sm:px-12 w-full overflow-hidden bg-transparent">
+    <!-- HD Video Hero Section with Tightened Mobile Height & No Gaps -->
+    <section class="relative min-h-[45vh] sm:min-h-[80vh] flex flex-col justify-between pt-0 pb-4 px-4 sm:px-12 w-full overflow-hidden bg-transparent">
         <div class="absolute inset-0 w-full h-full bg-transparent flex items-center justify-center overflow-hidden z-0">
-            <video autoplay muted loop playsinline class="w-full h-full object-contain pointer-events-none opacity-90">
+            <video autoplay muted loop playsinline class="w-full h-full object-cover sm:object-contain pointer-events-none opacity-90">
                 <source src="https://res.cloudinary.com/daarlhq52/video/upload/v1793865224/3c5947f0d85d768a10bf5bdd900d094c_het0zi.mp4" type="video/mp4">
             </video>
             <!-- Soft lateral fade gradients to blend video edges smoothly into page background -->
             <div class="absolute inset-0 bg-gradient-to-r from-[#030712] via-transparent to-[#030712] opacity-75 pointer-events-none z-10"></div>
-            <div class="absolute inset-0 bg-gradient-to-t from-[#030712]/50 via-transparent to-[#030712]/50 pointer-events-none z-10"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-[#030712] via-transparent to-[#030712] pointer-events-none z-10"></div>
         </div>
 
         <!-- Full Width Scrolling Greeting Message in Logo Font & Orange Color in Middle -->
-        <div class="w-full overflow-hidden py-2 relative z-20 mt-auto">
+        <div class="w-full overflow-hidden py-1 relative z-20 mt-auto">
             <div class="welcome-ticker">
-                <span class="brand-name text-lg sm:text-3xl uppercase tracking-wider">
+                <span class="brand-name text-base sm:text-3xl uppercase tracking-wider">
                     Welcome to Lakshmi Autocare
                 </span>
             </div>
         </div>
 
         <!-- Remaining Two Buttons Centered at Bottom of Animation in One Row -->
-        <div class="w-full relative z-20 pb-4 flex justify-center">
-            <div class="flex flex-col sm:flex-row items-center justify-center space-y-3 sm:space-y-0 sm:space-x-5 w-full max-w-xl mx-auto">
-                <button onclick="openBookingModal()" class="w-full sm:w-1/2 px-6 py-3.5 sm:py-4 rounded-full text-xs sm:text-sm uppercase tracking-widest font-bold bg-gradient-to-r from-gold-500 via-gold-300 to-[#ffd700] text-navy-950 shadow-2xl shadow-gold-300/30 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center space-x-3">
+        <div class="w-full relative z-20 pb-1 flex justify-center">
+            <div class="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-5 w-full max-w-xl mx-auto">
+                <button onclick="openBookingModal()" class="w-full sm:w-1/2 px-6 py-3 rounded-full text-xs sm:text-sm uppercase tracking-widest font-bold bg-gradient-to-r from-gold-500 via-gold-300 to-[#ffd700] text-navy-950 shadow-2xl shadow-gold-300/30 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center space-x-3">
                     <span>Schedule Treatment</span>
                     <i class="fa-solid fa-arrow-right"></i>
                 </button>
-                <a href="#services" class="w-full sm:w-1/2 px-6 py-3.5 sm:py-4 rounded-full text-xs sm:text-sm uppercase tracking-widest font-semibold text-gray-200 glass-card hover:border-[#ffd700] transition-all duration-300 text-center">
+                <a href="#services" class="w-full sm:w-1/2 px-6 py-3 rounded-full text-xs sm:text-sm uppercase tracking-widest font-semibold text-gray-200 glass-card hover:border-[#ffd700] transition-all duration-300 text-center">
                     Explore Services
                 </a>
             </div>
@@ -339,7 +338,7 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-20 px-4 sm:px-12 w-full relative z-10">
+    <section id="services" class="py-10 sm:py-20 px-4 sm:px-12 w-full relative z-10">
         <div class="w-full max-w-7xl mx-auto space-y-16">
             <div class="text-center space-y-4 max-w-3xl mx-auto">
                 <span class="text-xs uppercase tracking-[0.3em] text-[#ffd700] font-semibold">Exquisite Craftsmanship</span>
@@ -364,7 +363,7 @@
                             </div>
                         </div>
                         <div class="p-6 space-y-3">
-                            <h3 class="font-serif text-2xl font-bold text-gold-200">1. Denting</h3>
+                            <h3 class="font-serif text-2xl font-bold text-gold-200">Denting</h3>
                             <p class="text-xs sm:text-sm text-gray-300 leading-relaxed font-light">
                                 Expert precision body panel reshaping, dent removal, and structural alignment to restore your vehicle's factory form to absolute perfection.
                             </p>
@@ -391,7 +390,7 @@
                             </div>
                         </div>
                         <div class="p-6 space-y-3">
-                            <h3 class="font-serif text-2xl font-bold text-gold-200">2. Painting</h3>
+                            <h3 class="font-serif text-2xl font-bold text-gold-200">Painting</h3>
                             <p class="text-xs sm:text-sm text-gray-300 leading-relaxed font-light">
                                 Factory-grade computerized color matching, dust-free paint booth baking, and immaculate finish coats for a breathtaking brand-new sheen.
                             </p>
@@ -418,7 +417,7 @@
                             </div>
                         </div>
                         <div class="p-6 space-y-3">
-                            <h3 class="font-serif text-2xl font-bold text-gold-200">3. Washing</h3>
+                            <h3 class="font-serif text-2xl font-bold text-gold-200">Washing</h3>
                             <p class="text-xs sm:text-sm text-gray-300 leading-relaxed font-light">
                                 Multi-stage foam wash, wheel decontamination, and streak-free blow drying ensuring absolute zero swirl marks on your luxury paintwork.
                             </p>
@@ -445,7 +444,7 @@
                             </div>
                         </div>
                         <div class="p-6 space-y-3">
-                            <h3 class="font-serif text-2xl font-bold text-gold-200">4. Car Repairing</h3>
+                            <h3 class="font-serif text-2xl font-bold text-gold-200">Car Repairing</h3>
                             <p class="text-xs sm:text-sm text-gray-300 leading-relaxed font-light">
                                 Advanced mechanical diagnostics, engine tuning, and comprehensive mechanical repairs performed by certified expert technicians.
                             </p>
@@ -472,7 +471,7 @@
                             </div>
                         </div>
                         <div class="p-6 space-y-3">
-                            <h3 class="font-serif text-2xl font-bold text-gold-200">5. Wheel Alignment</h3>
+                            <h3 class="font-serif text-2xl font-bold text-gold-200">Wheel Alignment</h3>
                             <p class="text-xs sm:text-sm text-gray-300 leading-relaxed font-light">
                                 High-precision 3D computerized wheel alignment and balancing to ensure optimal steering stability and even tire wear.
                             </p>
@@ -499,7 +498,7 @@
                             </div>
                         </div>
                         <div class="p-6 space-y-3">
-                            <h3 class="font-serif text-2xl font-bold text-gold-200">6. AC Service</h3>
+                            <h3 class="font-serif text-2xl font-bold text-gold-200">AC Service</h3>
                             <p class="text-xs sm:text-sm text-gray-300 leading-relaxed font-light">
                                 Comprehensive climate control servicing, gas top-up, leak testing, and evaporator cleaning for powerful cabin cooling performance.
                             </p>
@@ -517,7 +516,7 @@
     </section>
 
     <!-- Gallery Section -->
-    <section id="gallery" class="py-20 px-4 sm:px-12 w-full relative z-10 overflow-hidden">
+    <section id="gallery" class="py-10 sm:py-20 px-4 sm:px-12 w-full relative z-10 overflow-hidden">
         <div class="w-full max-w-7xl mx-auto space-y-16">
             <div class="text-center space-y-4 max-w-2xl mx-auto">
                 <span class="text-xs uppercase tracking-[0.3em] text-[#ffd700] font-semibold">Masterpieces in Motion</span>
@@ -648,7 +647,7 @@
     </section>
 
     <!-- Location & Contact Section -->
-    <section id="contact" class="py-20 px-4 sm:px-12 w-full relative z-10">
+    <section id="contact" class="py-10 sm:py-20 px-4 sm:px-12 w-full relative z-10">
         <div class="w-full max-w-4xl mx-auto text-center space-y-8">
             <div class="space-y-4">
                 <span class="text-xs uppercase tracking-[0.3em] text-[#ffd700] font-semibold">Visit Our Studio</span>
@@ -718,8 +717,8 @@
         </div>
     </section>
 
-    <!-- Founder & CEO Section (Relocated to End) -->
-    <section class="py-20 px-4 sm:px-12 lg:px-24 w-full relative z-10 bg-navy-950/80 border-t border-gold-300/20 flex items-center">
+    <!-- Founder & CEO Section -->
+    <section class="py-10 sm:py-20 px-4 sm:px-12 lg:px-24 w-full relative z-10 bg-navy-950/80 border-t border-gold-300/20 flex items-center">
         <div class="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
             <!-- Left Corner Founder Image Area -->
@@ -845,12 +844,12 @@
                 <div>
                     <label class="block text-xs uppercase tracking-widest text-gold-300 mb-1 font-medium">Select Service</label>
                     <select id="booking-service" class="w-full px-4 py-3 rounded-xl glass-card border border-gold-300/30 text-sm text-gray-200 focus:outline-none focus:border-[#ffd700] transition-colors bg-navy-900">
-                        <option value="Denting">1. Denting</option>
-                        <option value="Painting">2. Painting</option>
-                        <option value="Washing">3. Washing</option>
-                        <option value="Car Repairing">4. Car Repairing</option>
-                        <option value="Wheel Alignment">5. Wheel Alignment</option>
-                        <option value="AC Service">6. AC Service</option>
+                        <option value="Denting">Denting</option>
+                        <option value="Painting">Painting</option>
+                        <option value="Washing">Washing</option>
+                        <option value="Car Repairing">Car Repairing</option>
+                        <option value="Wheel Alignment">Wheel Alignment</option>
+                        <option value="AC Service">AC Service</option>
                     </select>
                 </div>
 
