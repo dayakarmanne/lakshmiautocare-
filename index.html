@@ -104,16 +104,18 @@
             transition: width 0.1s ease-out;
         }
 
+        /* Refined Glass Cards so the Center Website Background remains clearly visible */
         .glass-card {
-            background: rgba(10, 17, 40, 0.75);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-            border: 1px solid rgba(223, 177, 91, 0.25);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 215, 0, 0.2);
+            background: rgba(5, 11, 20, 0.58);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(223, 177, 91, 0.28);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 215, 0, 0.2);
         }
         .glass-card:hover {
+            background: rgba(10, 17, 40, 0.72);
             border-color: rgba(255, 215, 0, 0.7);
-            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.9), 0 0 30px rgba(223, 177, 91, 0.35), inset 0 1px 0 rgba(255, 215, 0, 0.5);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.85), 0 0 30px rgba(223, 177, 91, 0.35), inset 0 1px 0 rgba(255, 215, 0, 0.5);
         }
 
         .gold-shimmer {
@@ -128,8 +130,36 @@
             color: #f97316 !important;
             font-weight: 700;
             letter-spacing: 0.05em;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.85);
         }
 
+        /* Full-Page Fixed Center Background Image */
+        #site-bg-wrapper {
+            position: fixed;
+            inset: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -3;
+            pointer-events: none;
+            background-color: #030712;
+            background-image: url('https://res.cloudinary.com/daarlhq52/image/upload/v1795463554/Lakshmiautocarebg_fyk02o.png');
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+
+        /* Ambient Edge Vignette — keeps the exact center crystal clear while blending edges */
+        #site-bg-vignette {
+            position: fixed;
+            inset: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -2;
+            pointer-events: none;
+            background: radial-gradient(circle at center, rgba(3, 7, 18, 0.08) 0%, rgba(3, 7, 18, 0.45) 60%, rgba(3, 7, 18, 0.85) 100%);
+        }
+
+        /* 3D Particles Overlay (Transparent so background shines through) */
         #canvas-container {
             position: fixed;
             top: 0;
@@ -138,7 +168,7 @@
             height: 100vh;
             z-index: -1;
             pointer-events: none;
-            background: radial-gradient(circle at center, #0a1128 0%, #030712 100%);
+            background: transparent;
         }
 
         @keyframes pulseGold {
@@ -229,6 +259,10 @@
         <img src="logo.svg" alt="Cursor Logo" class="cursor-logo">
     </div>
 
+    <!-- Full-Website Center Background Layer -->
+    <div id="site-bg-wrapper" aria-hidden="true"></div>
+    <div id="site-bg-vignette" aria-hidden="true"></div>
+
     <!-- 3D Transparent Background Canvas -->
     <div id="canvas-container"></div>
 
@@ -253,13 +287,13 @@
 
             <nav class="hidden lg:flex items-center space-x-8">
                 <a href="#" class="text-sm uppercase tracking-widest text-[#ffd700] font-semibold transition-colors">Home</a>
-                <a href="#services" class="text-sm uppercase tracking-widest text-gray-300 hover:text-[#ffd700] transition-colors">Services</a>
-                <a href="#gallery" class="text-sm uppercase tracking-widest text-gray-300 hover:text-[#ffd700] transition-colors">Gallery</a>
-                <a href="#contact" class="text-sm uppercase tracking-widest text-gray-300 hover:text-[#ffd700] transition-colors">Contact</a>
+                <a href="#services" class="text-sm uppercase tracking-widest text-gray-200 hover:text-[#ffd700] transition-colors">Services</a>
+                <a href="#gallery" class="text-sm uppercase tracking-widest text-gray-200 hover:text-[#ffd700] transition-colors">Gallery</a>
+                <a href="#contact" class="text-sm uppercase tracking-widest text-gray-200 hover:text-[#ffd700] transition-colors">Contact</a>
             </nav>
 
             <div class="hidden md:flex items-center space-x-4">
-                <a href="tel:898929995" class="px-4 py-2 rounded-full text-xs uppercase tracking-widest font-semibold text-gold-300 border border-gold-300/40 hover:bg-gold-300/10 hover:border-[#ffd700] transition-all duration-300 flex items-center space-x-2">
+                <a href="tel:898929995" class="px-4 py-2 rounded-full text-xs uppercase tracking-widest font-semibold text-gold-300 glass-card border border-gold-300/40 hover:bg-gold-300/15 hover:border-[#ffd700] transition-all duration-300 flex items-center space-x-2">
                     <i class="fa-solid fa-phone-volume text-[#ffd700]"></i>
                     <span>8989 299 95</span>
                 </a>
@@ -290,7 +324,7 @@
         </div>
     </header>
 
-    <!-- Top Section: Title & Location Button (Tightened Spacing) -->
+    <!-- Top Section: Location Pill (Positioned cleanly below navbar without obstructing center visual) -->
     <div class="w-full text-center relative z-20 pt-20 sm:pt-24 pb-1">
         <div class="w-full text-center relative z-20 pt-2 px-4 flex justify-center">
             <a href="https://maps.app.goo.gl/3yhabtFmFBkC1H3b8?g_st=aw" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-3 px-5 py-2 rounded-full glass-card border border-gold-300/40 hover:border-[#ffd700] transition-all pulse-gold shadow-lg">
@@ -300,34 +334,28 @@
         </div>
     </div>
 
-    <!-- HD Video Hero Section with Tightened Mobile Height & No Gaps -->
-    <section class="relative min-h-[45vh] sm:min-h-[80vh] flex flex-col justify-between pt-0 pb-4 px-4 sm:px-12 w-full overflow-hidden bg-transparent">
-        <div class="absolute inset-0 w-full h-full bg-transparent flex items-center justify-center overflow-hidden z-0">
-            <video autoplay muted loop playsinline class="w-full h-full object-cover sm:object-contain pointer-events-none opacity-90">
-                <source src="https://res.cloudinary.com/daarlhq52/video/upload/v1793865224/3c5947f0d85d768a10bf5bdd900d094c_het0zi.mp4" type="video/mp4">
-            </video>
-            <!-- Soft lateral fade gradients to blend video edges smoothly into page background -->
-            <div class="absolute inset-0 bg-gradient-to-r from-[#030712] via-transparent to-[#030712] opacity-75 pointer-events-none z-10"></div>
-            <div class="absolute inset-0 bg-gradient-to-t from-[#030712] via-transparent to-[#030712] pointer-events-none z-10"></div>
-        </div>
+    <!-- Hero Section: Full Viewport Opening so the Center Background Image is Unobstructed & Crystal Clear -->
+    <section class="relative min-h-[78vh] sm:min-h-[86vh] flex flex-col justify-end pb-6 sm:pb-10 px-4 sm:px-12 w-full overflow-hidden bg-transparent">
+        <!-- Bottom Subtle Gradient only behind CTA controls for crisp readability while keeping the center 100% open -->
+        <div class="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-[#030712]/90 via-[#030712]/40 to-transparent pointer-events-none z-10"></div>
 
-        <!-- Full Width Scrolling Greeting Message in Logo Font & Orange Color in Middle -->
-        <div class="w-full overflow-hidden py-1 relative z-20 mt-auto">
+        <!-- Full Width Scrolling Greeting Message in Logo Font & Orange Color -->
+        <div class="w-full overflow-hidden py-2 relative z-20">
             <div class="welcome-ticker">
-                <span class="brand-name text-base sm:text-3xl uppercase tracking-wider">
+                <span class="brand-name text-lg sm:text-3xl uppercase tracking-wider">
                     Welcome to Lakshmi Autocare
                 </span>
             </div>
         </div>
 
-        <!-- Remaining Two Buttons Centered at Bottom of Animation in One Row -->
-        <div class="w-full relative z-20 pb-1 flex justify-center">
-            <div class="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-5 w-full max-w-xl mx-auto">
-                <button onclick="openBookingModal()" class="w-full sm:w-1/2 px-6 py-3 rounded-full text-xs sm:text-sm uppercase tracking-widest font-bold bg-gradient-to-r from-gold-500 via-gold-300 to-[#ffd700] text-navy-950 shadow-2xl shadow-gold-300/30 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center space-x-3">
+        <!-- Action Buttons Centered at Bottom -->
+        <div class="w-full relative z-20 pt-2 flex justify-center">
+            <div class="flex flex-col sm:flex-row items-center justify-center space-y-2.5 sm:space-y-0 sm:space-x-5 w-full max-w-xl mx-auto">
+                <button onclick="openBookingModal()" class="w-full sm:w-1/2 px-6 py-3.5 rounded-full text-xs sm:text-sm uppercase tracking-widest font-bold bg-gradient-to-r from-gold-500 via-gold-300 to-[#ffd700] text-navy-950 shadow-2xl shadow-gold-300/30 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center space-x-3">
                     <span>Schedule Treatment</span>
                     <i class="fa-solid fa-arrow-right"></i>
                 </button>
-                <a href="#services" class="w-full sm:w-1/2 px-6 py-3 rounded-full text-xs sm:text-sm uppercase tracking-widest font-semibold text-gray-200 glass-card hover:border-[#ffd700] transition-all duration-300 text-center">
+                <a href="#services" class="w-full sm:w-1/2 px-6 py-3.5 rounded-full text-xs sm:text-sm uppercase tracking-widest font-semibold text-gray-100 glass-card hover:border-[#ffd700] transition-all duration-300 text-center">
                     Explore Services
                 </a>
             </div>
@@ -335,13 +363,13 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-10 sm:py-20 px-4 sm:px-12 w-full relative z-10">
-        <div class="w-full max-w-7xl mx-auto space-y-16">
-            <div class="text-center space-y-4 max-w-3xl mx-auto">
+    <section id="services" class="py-12 sm:py-20 px-4 sm:px-12 w-full relative z-10">
+        <div class="w-full max-w-7xl mx-auto space-y-14">
+            <div class="text-center space-y-4 max-w-3xl mx-auto glass-card p-6 sm:p-8 rounded-3xl border border-gold-300/25">
                 <span class="text-xs uppercase tracking-[0.3em] text-[#ffd700] font-semibold">Exquisite Craftsmanship</span>
                 <h2 class="brand-name text-3xl sm:text-5xl uppercase tracking-wider">Signature Services</h2>
                 <div class="w-24 h-0.5 bg-gradient-to-r from-transparent via-[#ffd700] to-transparent mx-auto"></div>
-                <p class="text-gray-300 text-sm sm:text-base font-light px-2">
+                <p class="text-gray-200 text-sm sm:text-base font-light px-2">
                     Every treatment is tailored with surgical precision using advanced professional gear and pH-balanced products at <span class="brand-name">Lakshmi Autocare</span>.
                 </p>
             </div>
@@ -350,18 +378,18 @@
                 <!-- 1. Denting -->
                 <div class="glass-card rounded-2xl overflow-hidden group hover:-translate-y-2 transition-all duration-500 border border-gold-300/30 flex flex-col justify-between w-full">
                     <div>
-                        <div class="relative h-56 overflow-hidden bg-black w-full">
+                        <div class="relative h-56 overflow-hidden bg-black/60 w-full">
                             <video autoplay muted loop playsinline class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                                 <source src="https://res.cloudinary.com/daarlhq52/video/upload/v1793862757/WhatsApp_Video_2026-11-05_at_12.40.17_PM_d8wbdo.mp4" type="video/mp4">
                             </video>
-                            <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/20 to-transparent"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent"></div>
                             <div class="absolute top-4 right-4 w-10 h-10 rounded-full glass-card flex items-center justify-center text-[#ffd700] border border-gold-300/40">
                                 <i class="fa-solid fa-hammer"></i>
                             </div>
                         </div>
                         <div class="p-6 space-y-3">
                             <h3 class="font-serif text-2xl font-bold text-gold-200">Denting</h3>
-                            <p class="text-xs sm:text-sm text-gray-300 leading-relaxed font-light">
+                            <p class="text-xs sm:text-sm text-gray-200 leading-relaxed font-light">
                                 Expert precision body panel reshaping, dent removal, and structural alignment to restore your vehicle's factory form to absolute perfection.
                             </p>
                         </div>
@@ -377,18 +405,18 @@
                 <!-- 2. Painting -->
                 <div class="glass-card rounded-2xl overflow-hidden group hover:-translate-y-2 transition-all duration-500 border border-gold-300/30 flex flex-col justify-between w-full">
                     <div>
-                        <div class="relative h-56 overflow-hidden bg-black w-full">
+                        <div class="relative h-56 overflow-hidden bg-black/60 w-full">
                             <video autoplay muted loop playsinline class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                                 <source src="https://res.cloudinary.com/daarlhq52/video/upload/v1793863111/WhatsApp_Video_2026-11-05_at_12.47.44_PM_ycbsvi.mp4" type="video/mp4">
                             </video>
-                            <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/20 to-transparent"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent"></div>
                             <div class="absolute top-4 right-4 w-10 h-10 rounded-full glass-card flex items-center justify-center text-[#ffd700] border border-gold-300/40">
                                 <i class="fa-solid fa-paint-roller"></i>
                             </div>
                         </div>
                         <div class="p-6 space-y-3">
                             <h3 class="font-serif text-2xl font-bold text-gold-200">Painting</h3>
-                            <p class="text-xs sm:text-sm text-gray-300 leading-relaxed font-light">
+                            <p class="text-xs sm:text-sm text-gray-200 leading-relaxed font-light">
                                 Factory-grade computerized color matching, dust-free paint booth baking, and immaculate finish coats for a breathtaking brand-new sheen.
                             </p>
                         </div>
@@ -404,18 +432,18 @@
                 <!-- 3. Washing -->
                 <div class="glass-card rounded-2xl overflow-hidden group hover:-translate-y-2 transition-all duration-500 border border-gold-300/30 flex flex-col justify-between w-full">
                     <div>
-                        <div class="relative h-56 overflow-hidden bg-black w-full">
+                        <div class="relative h-56 overflow-hidden bg-black/60 w-full">
                             <video autoplay muted loop playsinline class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                                 <source src="https://res.cloudinary.com/daarlhq52/video/upload/v1793863429/WhatsApp_Video_2026-11-05_at_12.52.46_PM_yfysem.mp4" type="video/mp4">
                             </video>
-                            <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/20 to-transparent"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent"></div>
                             <div class="absolute top-4 right-4 w-10 h-10 rounded-full glass-card flex items-center justify-center text-[#ffd700] border border-gold-300/40">
                                 <i class="fa-solid fa-water"></i>
                             </div>
                         </div>
                         <div class="p-6 space-y-3">
                             <h3 class="font-serif text-2xl font-bold text-gold-200">Washing</h3>
-                            <p class="text-xs sm:text-sm text-gray-300 leading-relaxed font-light">
+                            <p class="text-xs sm:text-sm text-gray-200 leading-relaxed font-light">
                                 Multi-stage foam wash, wheel decontamination, and streak-free blow drying ensuring absolute zero swirl marks on your luxury paintwork.
                             </p>
                         </div>
@@ -431,18 +459,18 @@
                 <!-- 4. Car Repairing -->
                 <div class="glass-card rounded-2xl overflow-hidden group hover:-translate-y-2 transition-all duration-500 border border-gold-300/30 flex flex-col justify-between w-full">
                     <div>
-                        <div class="relative h-56 overflow-hidden bg-black w-full">
+                        <div class="relative h-56 overflow-hidden bg-black/60 w-full">
                             <video autoplay muted loop playsinline class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                                 <source src="https://res.cloudinary.com/daarlhq52/video/upload/v1793863644/WhatsApp_Video_2026-11-05_at_12.56.32_PM_sxvsxi.mp4" type="video/mp4">
                             </video>
-                            <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/20 to-transparent"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent"></div>
                             <div class="absolute top-4 right-4 w-10 h-10 rounded-full glass-card flex items-center justify-center text-[#ffd700] border border-gold-300/40">
                                 <i class="fa-solid fa-screwdriver-wrench"></i>
                             </div>
                         </div>
                         <div class="p-6 space-y-3">
                             <h3 class="font-serif text-2xl font-bold text-gold-200">Car Repairing</h3>
-                            <p class="text-xs sm:text-sm text-gray-300 leading-relaxed font-light">
+                            <p class="text-xs sm:text-sm text-gray-200 leading-relaxed font-light">
                                 Advanced mechanical diagnostics, engine tuning, and comprehensive mechanical repairs performed by certified expert technicians.
                             </p>
                         </div>
@@ -458,18 +486,18 @@
                 <!-- 5. Wheel Alignment -->
                 <div class="glass-card rounded-2xl overflow-hidden group hover:-translate-y-2 transition-all duration-500 border border-gold-300/30 flex flex-col justify-between w-full">
                     <div>
-                        <div class="relative h-56 overflow-hidden bg-black w-full">
+                        <div class="relative h-56 overflow-hidden bg-black/60 w-full">
                             <video autoplay muted loop playsinline class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                                 <source src="https://res.cloudinary.com/daarlhq52/video/upload/v1793864028/WhatsApp_Video_2026-11-05_at_1.00.04_PM_b1fp2j.mp4" type="video/mp4">
                             </video>
-                            <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/20 to-transparent"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent"></div>
                             <div class="absolute top-4 right-4 w-10 h-10 rounded-full glass-card flex items-center justify-center text-[#ffd700] border border-gold-300/40">
                                 <i class="fa-solid fa-compass"></i>
                             </div>
                         </div>
                         <div class="p-6 space-y-3">
                             <h3 class="font-serif text-2xl font-bold text-gold-200">Wheel Alignment</h3>
-                            <p class="text-xs sm:text-sm text-gray-300 leading-relaxed font-light">
+                            <p class="text-xs sm:text-sm text-gray-200 leading-relaxed font-light">
                                 High-precision 3D computerized wheel alignment and balancing to ensure optimal steering stability and even tire wear.
                             </p>
                         </div>
@@ -485,18 +513,18 @@
                 <!-- 6. AC Service -->
                 <div class="glass-card rounded-2xl overflow-hidden group hover:-translate-y-2 transition-all duration-500 border border-gold-300/30 flex flex-col justify-between w-full">
                     <div>
-                        <div class="relative h-56 overflow-hidden bg-black w-full">
+                        <div class="relative h-56 overflow-hidden bg-black/60 w-full">
                             <video autoplay muted loop playsinline class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                                 <source src="https://res.cloudinary.com/daarlhq52/video/upload/v1793864149/WhatsApp_Video_2026-11-05_at_1.03.58_PM_mbyqc6.mp4" type="video/mp4">
                             </video>
-                            <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/20 to-transparent"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent"></div>
                             <div class="absolute top-4 right-4 w-10 h-10 rounded-full glass-card flex items-center justify-center text-[#ffd700] border border-gold-300/40">
                                 <i class="fa-solid fa-snowflake"></i>
                             </div>
                         </div>
                         <div class="p-6 space-y-3">
                             <h3 class="font-serif text-2xl font-bold text-gold-200">AC Service</h3>
-                            <p class="text-xs sm:text-sm text-gray-300 leading-relaxed font-light">
+                            <p class="text-xs sm:text-sm text-gray-200 leading-relaxed font-light">
                                 Comprehensive climate control servicing, gas top-up, leak testing, and evaporator cleaning for powerful cabin cooling performance.
                             </p>
                         </div>
@@ -513,9 +541,9 @@
     </section>
 
     <!-- Gallery Section -->
-    <section id="gallery" class="py-10 sm:py-20 px-4 sm:px-12 w-full relative z-10 overflow-hidden">
-        <div class="w-full max-w-7xl mx-auto space-y-16">
-            <div class="text-center space-y-4 max-w-2xl mx-auto">
+    <section id="gallery" class="py-12 sm:py-20 px-4 sm:px-12 w-full relative z-10 overflow-hidden">
+        <div class="w-full max-w-7xl mx-auto space-y-14">
+            <div class="text-center space-y-4 max-w-2xl mx-auto glass-card p-6 sm:p-8 rounded-3xl border border-gold-300/25">
                 <span class="text-xs uppercase tracking-[0.3em] text-[#ffd700] font-semibold">Masterpieces in Motion</span>
                 <h2 class="brand-name text-3xl sm:text-5xl uppercase tracking-wider">The Luxury Gallery</h2>
                 <div class="w-24 h-0.5 bg-gradient-to-r from-transparent via-[#ffd700] to-transparent mx-auto"></div>
@@ -527,13 +555,13 @@
                     <div class="glass-card rounded-2xl overflow-hidden border border-gold-300/30 w-[320px] sm:w-[480px] flex-shrink-0 flex flex-col">
                         <div class="h-56 sm:h-64 relative overflow-hidden">
                             <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80" alt="Hand Wax & Polish" class="w-full h-full object-cover">
-                            <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-transparent"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-transparent to-transparent"></div>
                         </div>
                         <div class="p-6 space-y-3 flex flex-col justify-between flex-grow">
                             <div>
                                 <span class="text-xs text-[#ffd700] uppercase tracking-widest font-semibold">Hand Wax & Polish</span>
                                 <h3 class="font-serif text-2xl font-bold text-white mt-1">Exquisite Gloss Restoration</h3>
-                                <p class="text-xs sm:text-sm text-gray-300 font-light leading-relaxed mt-2">
+                                <p class="text-xs sm:text-sm text-gray-200 font-light leading-relaxed mt-2">
                                     Bespoke exterior detailing and carnauba hand polishing delivering breathtaking mirror reflections and supreme paint protection.
                                 </p>
                             </div>
@@ -546,13 +574,13 @@
                     <div class="glass-card rounded-2xl overflow-hidden border border-gold-300/30 w-[320px] sm:w-[480px] flex-shrink-0 flex flex-col">
                         <div class="h-56 sm:h-64 relative overflow-hidden">
                             <img src="https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=800&q=80" alt="Cabin Rejuvenation" class="w-full h-full object-cover">
-                            <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-transparent"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-transparent to-transparent"></div>
                         </div>
                         <div class="p-6 space-y-3 flex flex-col justify-between flex-grow">
                             <div>
                                 <span class="text-xs text-[#ffd700] uppercase tracking-widest font-semibold">Cabin Rejuvenation</span>
                                 <h3 class="font-serif text-2xl font-bold text-white mt-1">Bespoke Interior Care</h3>
-                                <p class="text-xs sm:text-sm text-gray-300 font-light leading-relaxed mt-2">
+                                <p class="text-xs sm:text-sm text-gray-200 font-light leading-relaxed mt-2">
                                     Deep leather conditioning, sanitization, and meticulous detailing designed to restore supreme cabin luxury and freshness.
                                 </p>
                             </div>
@@ -565,13 +593,13 @@
                     <div class="glass-card rounded-2xl overflow-hidden border border-gold-300/30 w-[320px] sm:w-[480px] flex-shrink-0 flex flex-col">
                         <div class="h-56 sm:h-64 relative overflow-hidden">
                             <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=800&q=80" alt="Scratch Eradication" class="w-full h-full object-cover">
-                            <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-transparent"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-transparent to-transparent"></div>
                         </div>
                         <div class="p-6 space-y-3 flex flex-col justify-between flex-grow">
                             <div>
                                 <span class="text-xs text-[#ffd700] uppercase tracking-widest font-semibold">Scratch Eradication</span>
                                 <h3 class="font-serif text-2xl font-bold text-white mt-1">Flawless Paint Correction</h3>
-                                <p class="text-xs sm:text-sm text-gray-300 font-light leading-relaxed mt-2">
+                                <p class="text-xs sm:text-sm text-gray-200 font-light leading-relaxed mt-2">
                                     Advanced rotary polishing and multi-stage correction to eliminate swirls, scuffs, and restore factory-grade clear coat clarity.
                                 </p>
                             </div>
@@ -585,13 +613,13 @@
                     <div class="glass-card rounded-2xl overflow-hidden border border-gold-300/30 w-[320px] sm:w-[480px] flex-shrink-0 flex flex-col">
                         <div class="h-56 sm:h-64 relative overflow-hidden">
                             <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80" alt="Hand Wax & Polish" class="w-full h-full object-cover">
-                            <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-transparent"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-transparent to-transparent"></div>
                         </div>
                         <div class="p-6 space-y-3 flex flex-col justify-between flex-grow">
                             <div>
                                 <span class="text-xs text-[#ffd700] uppercase tracking-widest font-semibold">Hand Wax & Polish</span>
                                 <h3 class="font-serif text-2xl font-bold text-white mt-1">Exquisite Gloss Restoration</h3>
-                                <p class="text-xs sm:text-sm text-gray-300 font-light leading-relaxed mt-2">
+                                <p class="text-xs sm:text-sm text-gray-200 font-light leading-relaxed mt-2">
                                     Bespoke exterior detailing and carnauba hand polishing delivering breathtaking mirror reflections and supreme paint protection.
                                 </p>
                             </div>
@@ -604,13 +632,13 @@
                     <div class="glass-card rounded-2xl overflow-hidden border border-gold-300/30 w-[320px] sm:w-[480px] flex-shrink-0 flex flex-col">
                         <div class="h-56 sm:h-64 relative overflow-hidden">
                             <img src="https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=800&q=80" alt="Cabin Rejuvenation" class="w-full h-full object-cover">
-                            <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-transparent"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-transparent to-transparent"></div>
                         </div>
                         <div class="p-6 space-y-3 flex flex-col justify-between flex-grow">
                             <div>
                                 <span class="text-xs text-[#ffd700] uppercase tracking-widest font-semibold">Cabin Rejuvenation</span>
                                 <h3 class="font-serif text-2xl font-bold text-white mt-1">Bespoke Interior Care</h3>
-                                <p class="text-xs sm:text-sm text-gray-300 font-light leading-relaxed mt-2">
+                                <p class="text-xs sm:text-sm text-gray-200 font-light leading-relaxed mt-2">
                                     Deep leather conditioning, sanitization, and meticulous detailing designed to restore supreme cabin luxury and freshness.
                                 </p>
                             </div>
@@ -623,13 +651,13 @@
                     <div class="glass-card rounded-2xl overflow-hidden border border-gold-300/30 w-[320px] sm:w-[480px] flex-shrink-0 flex flex-col">
                         <div class="h-56 sm:h-64 relative overflow-hidden">
                             <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=800&q=80" alt="Scratch Eradication" class="w-full h-full object-cover">
-                            <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-transparent"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-transparent to-transparent"></div>
                         </div>
                         <div class="p-6 space-y-3 flex flex-col justify-between flex-grow">
                             <div>
                                 <span class="text-xs text-[#ffd700] uppercase tracking-widest font-semibold">Scratch Eradication</span>
                                 <h3 class="font-serif text-2xl font-bold text-white mt-1">Flawless Paint Correction</h3>
-                                <p class="text-xs sm:text-sm text-gray-300 font-light leading-relaxed mt-2">
+                                <p class="text-xs sm:text-sm text-gray-200 font-light leading-relaxed mt-2">
                                     Advanced rotary polishing and multi-stage correction to eliminate swirls, scuffs, and restore factory-grade clear coat clarity.
                                 </p>
                             </div>
@@ -644,13 +672,13 @@
     </section>
 
     <!-- Location & Contact Section -->
-    <section id="contact" class="py-10 sm:py-20 px-4 sm:px-12 w-full relative z-10">
+    <section id="contact" class="py-12 sm:py-20 px-4 sm:px-12 w-full relative z-10">
         <div class="w-full max-w-4xl mx-auto text-center space-y-8">
-            <div class="space-y-4">
+            <div class="space-y-4 glass-card p-6 sm:p-8 rounded-3xl border border-gold-300/25">
                 <span class="text-xs uppercase tracking-[0.3em] text-[#ffd700] font-semibold">Visit Our Studio</span>
                 <h2 class="brand-name text-3xl sm:text-5xl uppercase tracking-wider">Location & Inquiries</h2>
                 <div class="w-24 h-0.5 bg-gradient-to-r from-transparent via-[#ffd700] to-transparent mx-auto"></div>
-                <p class="text-gray-300 text-sm sm:text-base font-light leading-relaxed max-w-2xl mx-auto px-2">
+                <p class="text-gray-200 text-sm sm:text-base font-light leading-relaxed max-w-2xl mx-auto px-2">
                     Conveniently situated for discerning vehicle owners along the ORR service road in Vattinagulapally with <span class="brand-name">Lakshmi Autocare</span>. Connect with us directly or drop by for a personal consultation.
                 </p>
             </div>
@@ -662,7 +690,7 @@
                     </div>
                     <div>
                         <h4 class="font-semibold text-gold-200 text-sm sm:text-base">Registered Address</h4>
-                        <p class="text-xs sm:text-sm text-gray-400">283/AA/1/1, ORR Service Rd, Vattinagulapally, Hyderabad, Telangana 500075</p>
+                        <p class="text-xs sm:text-sm text-gray-300">283/AA/1/1, ORR Service Rd, Vattinagulapally, Hyderabad, Telangana 500075</p>
                     </div>
                 </div>
 
@@ -703,7 +731,7 @@
                         <i class="fa-solid fa-calendar-days"></i>
                     </div>
                     <h3 class="font-serif text-2xl sm:text-3xl font-bold text-gold-200">Ready for Transformation?</h3>
-                    <p class="text-xs sm:text-sm text-gray-300 leading-relaxed max-w-xl mx-auto">
+                    <p class="text-xs sm:text-sm text-gray-200 leading-relaxed max-w-xl mx-auto">
                         Reserve your slot today and experience the gold standard in car care with <span class="brand-name">Lakshmi Autocare</span>. Quality service .Honest work, guaranteed.
                     </p>
                     <button onclick="openBookingModal()" class="w-full sm:w-auto px-8 py-4 rounded-xl text-xs uppercase tracking-widest font-bold bg-gradient-to-r from-gold-500 via-gold-300 to-[#ffd700] text-navy-950 shadow-lg shadow-gold-300/20 hover:scale-105 transition-all">
@@ -715,7 +743,7 @@
     </section>
 
     <!-- Founder & CEO Section -->
-    <section class="py-10 sm:py-20 px-4 sm:px-12 lg:px-24 w-full relative z-10 bg-navy-950/80 border-t border-gold-300/20 flex items-center">
+    <section class="py-12 sm:py-20 px-4 sm:px-12 lg:px-24 w-full relative z-10 bg-navy-950/60 backdrop-blur-sm border-t border-gold-300/20 flex items-center">
         <div class="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
             <!-- Left Corner Founder Image Area -->
@@ -750,12 +778,12 @@
                     <div class="ceo-scroll-wrapper items-center">
                         <div class="flex items-center space-x-8 pr-8">
                             <span class="brand-name text-lg sm:text-2xl text-gold-300 whitespace-nowrap">MR. MANIKRAJ — Founder & CEO, Lakshmi Auto Care</span>
-                            <span class="text-gray-300 text-xs sm:text-base font-light whitespace-nowrap">"Driven by uncompromising passion and professional precision for total automotive perfection."</span>
+                            <span class="text-gray-200 text-xs sm:text-base font-light whitespace-nowrap">"Driven by uncompromising passion and professional precision for total automotive perfection."</span>
                             <span class="text-gold-200 text-xs sm:text-base font-medium whitespace-nowrap">Your car our responsibility | Quality service .Honest work</span>
                         </div>
                         <div class="flex items-center space-x-8 pr-8" aria-hidden="true">
                             <span class="brand-name text-lg sm:text-2xl text-gold-300 whitespace-nowrap">MR. MANIKRAJ — Founder & CEO, Lakshmi Auto Care</span>
-                            <span class="text-gray-300 text-xs sm:text-base font-light whitespace-nowrap">"Driven by uncompromising passion and professional precision for total automotive perfection."</span>
+                            <span class="text-gray-200 text-xs sm:text-base font-light whitespace-nowrap">"Driven by uncompromising passion and professional precision for total automotive perfection."</span>
                             <span class="text-gold-200 text-xs sm:text-base font-medium whitespace-nowrap">Your car our responsibility | Quality service .Honest work</span>
                         </div>
                     </div>
@@ -764,11 +792,11 @@
                 <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
                     <div class="flex items-center space-x-2">
                         <i class="fa-solid fa-circle-check text-[#ffd700]"></i>
-                        <span class="text-xs text-gray-300 uppercase tracking-wider font-medium">Quality Service</span>
+                        <span class="text-xs text-gray-200 uppercase tracking-wider font-medium">Quality Service</span>
                     </div>
                     <div class="flex items-center space-x-2">
                         <i class="fa-solid fa-circle-check text-[#ffd700]"></i>
-                        <span class="text-xs text-gray-300 uppercase tracking-wider font-medium">Honest Work</span>
+                        <span class="text-xs text-gray-200 uppercase tracking-wider font-medium">Honest Work</span>
                     </div>
                 </div>
             </div>
@@ -783,14 +811,14 @@
                 <img src="logo.svg" alt="Lakshmi Autocare Logo" class="w-12 h-12 object-contain shrink-0">
                 <div>
                     <span class="brand-name text-base sm:text-lg tracking-wide block">Lakshmi Autocare</span>
-                    <span class="mt-1 text-[10px] tracking-[0.12em] text-gray-400 block max-w-sm">283/AA/1/1, ORR Service Rd, Vattinagulapally, Hyderabad, Telangana 500075</span>
+                    <span class="mt-1 text-[10px] tracking-[0.12em] text-gray-300 block max-w-sm">283/AA/1/1, ORR Service Rd, Vattinagulapally, Hyderabad, Telangana 500075</span>
                 </div>
             </div>
 
-            <div class="text-xs text-gray-400 space-y-1">
+            <div class="text-xs text-gray-300 space-y-1">
                 <p>&copy; 2026 <span class="brand-name text-xs">Lakshmi Autocare</span>. All rights reserved.</p>
                 <p class="text-[#ffd700] italic">"Your car our responsibility"</p>
-                <p class="text-[10px] text-gray-400">GSTIN: <span class="text-gold-300">36BCEPT4719C1ZM</span> | Email: <span class="text-gold-300">Lakshmiautocare3333@gmail.com</span></p>
+                <p class="text-[10px] text-gray-300">GSTIN: <span class="text-gold-300">36BCEPT4719C1ZM</span> | Email: <span class="text-gold-300">Lakshmiautocare3333@gmail.com</span></p>
             </div>
 
             <div class="flex items-center space-x-4 justify-center">
@@ -908,23 +936,23 @@
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         container.appendChild(renderer.domElement);
 
-        const particlesCount = 1400;
+        const particlesCount = 900;
         const geometry = new THREE.BufferGeometry();
         const positions = new Float32Array(particlesCount * 3);
 
         for (let i = 0; i < particlesCount * 3; i += 3) {
-            positions[i] = (Math.random() - 0.5) * 60;
-            positions[i + 1] = (Math.random() - 0.5) * 60;
-            positions[i + 2] = (Math.random() - 0.5) * 60;
+            positions[i] = (Math.random() - 0.5) * 65;
+            positions[i + 1] = (Math.random() - 0.5) * 65;
+            positions[i + 2] = (Math.random() - 0.5) * 65;
         }
 
         geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
         const material = new THREE.PointsMaterial({
-            size: 0.16,
+            size: 0.14,
             color: 0xffd700,
             transparent: true,
-            opacity: 0.85,
+            opacity: 0.65,
             blending: THREE.AdditiveBlending
         });
 
@@ -961,9 +989,9 @@
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
-                navbar.classList.add('bg-navy-950/85', 'backdrop-blur-md', 'shadow-2xl', 'border-b', 'border-gold-300/20');
+                navbar.classList.add('bg-navy-950/80', 'backdrop-blur-md', 'shadow-2xl', 'border-b', 'border-gold-300/20');
             } else {
-                navbar.classList.remove('bg-navy-950/85', 'backdrop-blur-md', 'shadow-2xl', 'border-b', 'border-gold-300/20');
+                navbar.classList.remove('bg-navy-950/80', 'backdrop-blur-md', 'shadow-2xl', 'border-b', 'border-gold-300/20');
             }
         });
 
