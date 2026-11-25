@@ -157,20 +157,31 @@
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.85), 0 0 30px rgba(223, 177, 91, 0.35), inset 0 1px 0 rgba(255, 215, 0, 0.5);
         }
 
-        /* High-Transparency Navbar & Footer */
+        /* Navbar: 100% Transparent at Top so Background Shows Clearly, Soft Grey Glass on Scroll */
         .liquid-dock {
-            background: rgba(3, 7, 18, 0.35);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(223, 177, 91, 0.18);
+            background: transparent;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            border: 1px solid transparent;
             box-shadow: none;
-            transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+            transition: background-color 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                        backdrop-filter 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                        border-color 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                        box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
         }
         .liquid-dock.scrolled {
-            background: rgba(3, 7, 18, 0.78);
+            background: rgba(128, 134, 145, 0.26);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border-color: rgba(223, 177, 91, 0.3);
+            border-color: rgba(255, 255, 255, 0.16);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+        }
+        footer .liquid-dock.scrolled {
+            background: rgba(128, 134, 145, 0.22);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-color: rgba(255, 255, 255, 0.14);
+            box-shadow: none;
         }
 
         /* Borderless Pill Navigation Link */
@@ -215,6 +226,13 @@
             100% { left: 130%; }
         }
 
+        .gold-shimmer {
+            background: linear-gradient(135deg, #fcf6ba 0%, #ffd700 35%, #dfb15b 70%, #aa771c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 35px rgba(255, 215, 0, 0.4);
+        }
+
         .brand-name {
             font-family: 'Chakra Petch', sans-serif;
             color: #f97316 !important;
@@ -256,9 +274,9 @@
             pointer-events: none;
             background: linear-gradient(
                 to bottom,
-                rgba(3, 7, 18, 0.52) 0%,
-                rgba(3, 7, 18, 0.08) 24%,
-                rgba(3, 7, 18, 0.08) 62%,
+                rgba(3, 7, 18, 0.35) 0%,
+                rgba(3, 7, 18, 0.04) 24%,
+                rgba(3, 7, 18, 0.04) 62%,
                 rgba(3, 7, 18, 0.85) 88%,
                 rgba(3, 7, 18, 0.95) 100%
             );
